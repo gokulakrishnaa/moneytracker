@@ -1,0 +1,9 @@
+.radio {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.expradio {
+  margin-left: 20px;
+}
