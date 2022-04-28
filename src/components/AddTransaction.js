@@ -7,7 +7,9 @@ export function AddTransaction() {
   const [amount, setAmount] = useState(0);
   const [choice, setChoice] = useState("");
 
-  const { addTransaction } = useContext(GlobalContext);
+  const { addTransactions, getTransactions } = useContext(GlobalContext);
+
+  const userId = localStorage.getItem("Id");
 
   const onSubmit = (add) => {
     add.preventDefault();
@@ -21,13 +23,13 @@ export function AddTransaction() {
     };
 
     const newTransaction = {
-      id: Math.floor(Math.random() * 1000),
+      userId: userId,
       remark,
       amount: +`${sign()}${amount}`,
       status: amtStatus(),
     };
-    console.log(newTransaction);
-    addTransaction(newTransaction);
+    addTransactions(newTransaction);
+    getTransactions(userId);
   };
 
   return (
@@ -63,9 +65,7 @@ export function AddTransaction() {
           onChange={(e) => setAmount(e.target.value)}
           placeholder="Enter amount"
         />
-        <button className="btn" type="submit">
-          Add Transaction
-        </button>
+        <button className="btn">Add Transaction</button>
       </form>
     </div>
   );

@@ -3,6 +3,7 @@ import { AppReducer } from "./AppReducer.js";
 
 const initialState = {
   transactions: [],
+  // userId: "",
 };
 
 const API_URL = "http://localhost:8000";
@@ -12,21 +13,28 @@ export const GlobalContext = createContext(initialState);
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
+  // async function userId() {
+  //   const userId = localStorage.getItem("Id");
+  //   dispatch({
+  //     type: "SET_USER",
+  //     payload: userId,
+  //   });
+  // }
+
   //Actions
-  async function getTransactions() {
-    const transaction_data = await fetch(`${API_URL}/api/transaction`).then(
-      (data) => data.json()
-    );
-    console.log(transaction_data);
+  async function getTransactions(userId) {
+    const transaction_data = await fetch(
+      `${API_URL}/api/exptrack/${userId}`
+    ).then((data) => data.json());
 
     dispatch({
-      type: "GET_TRANSACTION",
+      type: "GET_TRANSACTIONS",
       payload: transaction_data,
     });
   }
 
   function addTransactions(transaction) {
-    fetch(`${API_URL}/api/transaction`, {
+    fetch(`${API_URL}/api/exptrack`, {
       method: "POST",
       body: JSON.stringify(transaction),
       headers: { "Content-Type": "application/json" },
@@ -44,6 +52,7 @@ export const GlobalProvider = ({ children }) => {
         transactions: state.transactions,
         getTransactions,
         addTransactions,
+        // userId,
       }}
     >
       {children}

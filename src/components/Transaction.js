@@ -6,7 +6,7 @@ export function Transaction({ transaction }) {
   return (
     <div className="tranContainer">
       <li className="tranlist">
-        {transaction.text}
+        {transaction.remark}
         <span className="status">{transaction.status}</span>
         <span className="amount">
           {sign} ₹{Math.abs(transaction.amount)}

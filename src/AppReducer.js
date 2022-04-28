@@ -10,6 +10,11 @@ export const AppReducer = (state, action) => {
         ...state,
         transactions: [...state.transactions, action.payload],
       };
+    case "SET_USER":
+      return {
+        ...state,
+        userId: action.payload,
+      };
     default:
       return state;
   }
