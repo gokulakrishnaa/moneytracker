@@ -24,7 +24,7 @@ export function AddTransaction() {
 
     const newTransaction = {
       userId: userId,
-      remark,
+      remark: remark,
       amount: +`${sign()}${amount}`,
       status: amtStatus(),
     };
@@ -53,13 +53,25 @@ export function AddTransaction() {
           />
           <label for="income">Expense</label>
         </div>
-        <input
-          type="text"
+        <select
+          className="dropdownadd"
           value={remark}
           onChange={(e) => setRemark(e.target.value)}
-          placeholder=" Enter remark"
-          className="textaddtran"
-        />
+        >
+          <option value="" disabled selected>
+            Select your option
+          </option>
+          <option value="Salary">Salary</option>
+          <option value="Rent">Rent</option>
+          <option value="Food">Food</option>
+          <option value="Travel">Travel</option>
+          <option value="Movies">Movies</option>
+          <option value="Current Bill">Current Bill</option>
+          <option value="Interest">Interest</option>
+          <option value="Transfer">Transfer</option>
+          <option value="Fuel">Fuel</option>
+          <option value="Others">Others</option>
+        </select>
         <br />
         <input
           type="number"
