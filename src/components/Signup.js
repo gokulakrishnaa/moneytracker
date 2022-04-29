@@ -39,28 +39,28 @@ export function Signup() {
             type="text"
             value={email}
             onChange={(em) => setEmail(em.target.value)}
-            placeholder="Enter Email ID"
+            placeholder=" Enter Email ID"
             className="textfieldsignup"
           />
           <input
             type="text"
             value={firstname}
             onChange={(fname) => setFirstname(fname.target.value)}
-            placeholder="Enter First Name"
+            placeholder=" Enter First Name"
             className="textfieldsignup"
           />
           <input
             type="text"
             value={lastname}
             onChange={(lname) => setLastname(lname.target.value)}
-            placeholder="Enter Last Name"
+            placeholder=" Enter Last Name"
             className="textfieldsignup"
           />
           <input
             type="password"
             value={password}
             onChange={(pass) => setPassword(pass.target.value)}
-            placeholder="Enter Password"
+            placeholder=" Enter Password"
             className="textfieldsignup"
           />
           <button className="signButton" onClick={addUser}>

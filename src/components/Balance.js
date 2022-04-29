@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../ReactContext.js";
 import "../css/balance.css";
+import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 
 export function Balance() {
   const { transactions } = useContext(GlobalContext);
@@ -14,7 +15,10 @@ export function Balance() {
 
   return (
     <div className="balance">
-      <h2>Balance : </h2>
+      <div className="baltitle">
+        <AccountBalanceWalletIcon />
+        <h2>Balance :</h2>
+      </div>
       <h1 className="baldiv">₹ {total}</h1>
     </div>
   );

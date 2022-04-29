@@ -47,6 +47,7 @@ export function LoginPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="textfield"
+            placeholder=" Enter Email ID"
           />
           <h4>Password</h4>
           <input
@@ -54,6 +55,7 @@ export function LoginPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="textfield"
+            placeholder=" Enter Password"
           />
           <br />
           {errMsg}

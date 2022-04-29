@@ -24,3 +24,11 @@
   cursor: pointer;
   margin-right: 15px;
 }
+
+.headername {
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: white;
+  margin-left: 110px;
+}

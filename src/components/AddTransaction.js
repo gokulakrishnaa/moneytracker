@@ -34,7 +34,7 @@ export function AddTransaction() {
 
   return (
     <div className="addtransaction">
-      <h2>New Transaction</h2>
+      <h2>New Transaction : </h2>
       <form onSubmit={onSubmit}>
         <div className="radio">
           <input
@@ -57,7 +57,7 @@ export function AddTransaction() {
           type="text"
           value={remark}
           onChange={(e) => setRemark(e.target.value)}
-          placeholder="Enter remark"
+          placeholder=" Enter remark"
           className="textaddtran"
         />
         <br />
@@ -65,7 +65,7 @@ export function AddTransaction() {
           type="number"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
-          placeholder="Enter amount"
+          placeholder=" Enter amount"
           className="textaddtran"
         />
         <button className="btn">Add Transaction</button>

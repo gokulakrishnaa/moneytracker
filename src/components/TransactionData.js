@@ -41,7 +41,7 @@ export function TransactionData() {
 
   return (
     <div className="transactiondata">
-      <h2>Transaction History</h2>
+      <h2>Transaction History : </h2>
       <br />
       <TableContainer sx={{ maxHeight: 170 }} component={Paper}>
         <Table sx={{ minWidth: 360 }} aria-label="simple table">
