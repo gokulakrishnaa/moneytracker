@@ -1,5 +1,4 @@
 import React from "react";
-import "../css/transaction.css";
 
 export function Transaction({ transaction }) {
   const sign = transaction.amount < 0 ? "-" : "+";

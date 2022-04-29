@@ -20,10 +20,23 @@ function App() {
         </Route>
         <Route path="/home">
           <Header />
-          <Balance />
-          <IncExp />
-          <TransactionData />
-          <AddTransaction />
+          <div className="main">
+            <div className="left">
+              <Balance />
+              <IncExp />
+            </div>
+            <div className="middle">
+              <img
+                className="imghome"
+                src="https://cdni.iconscout.com/illustration/premium/thumb/boy-taking-notes-in-online-class-5004573-4211289.png"
+                alt=""
+              />
+            </div>
+            <div className="right">
+              <TransactionData />
+              <AddTransaction />
+            </div>
+          </div>
         </Route>
       </Switch>
     </div>

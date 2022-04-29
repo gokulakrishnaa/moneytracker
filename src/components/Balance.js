@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../ReactContext.js";
+import "../css/balance.css";
 
 export function Balance() {
   const { transactions } = useContext(GlobalContext);
@@ -13,8 +14,8 @@ export function Balance() {
 
   return (
     <div className="balance">
-      <h4>Balance : </h4>
-      <h2>₹ {total}</h2>
+      <h2>Balance : </h2>
+      <h1 className="baldiv">₹ {total}</h1>
     </div>
   );
 }

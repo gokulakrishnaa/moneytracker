@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../css/loginpage.css";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 export function LoginPage() {
   const history = useHistory();
@@ -39,29 +39,40 @@ export function LoginPage() {
         <p className="title">Expense Tracker</p>
       </div>
       <div className="loginContainer">
-        <h1>Sign In</h1>
-        <h5>E-Mail</h5>
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <h5>Password</h5>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="button" onClick={signIn} className="signinButton">
-          Sign In
-        </button>
-        {errMsg}
-        <button
-          onClick={() => history.push("/signup")}
-          className="signupButton"
-        >
-          Sign Up for Free
-        </button>
+        <div className="loginLeft">
+          <h1>Sign In</h1>
+          <h4>E-Mail</h4>
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="textfield"
+          />
+          <h4>Password</h4>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="textfield"
+          />
+          <br />
+          {errMsg}
+          <button type="button" onClick={signIn} className="signinButton">
+            Sign In
+          </button>
+          <p className="signupButton">
+            New User ?
+            <Link to="/signup" style={{ textDecoration: "none" }}>
+              <span className="signupLink"> Sign Up for Free</span>
+            </Link>
+          </p>
+        </div>
+        <div className="loginRight">
+          <img
+            src="https://cdni.iconscout.com/illustration/premium/thumb/expense-managing-app-4268368-3561011.png"
+            alt=""
+          />
+        </div>
       </div>
     </div>
   );

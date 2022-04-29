@@ -12,7 +12,9 @@ export function Header() {
   return (
     <div className="header">
       <p className="title">Expense Tracker</p>
-      <button onClick={signOut}>Sign out</button>
+      <button className="signOutButton" onClick={signOut}>
+        Sign out
+      </button>
     </div>
   );
 }

@@ -1,1 +1,36 @@
+* {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+}
 
+.main {
+  display: flex;
+  flex-direction: row;
+  background-color: aqua;
+  height: 447px;
+  padding: 25px 40px;
+}
+
+.left {
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: flex-start;
+}
+.right {
+  margin-left: 75px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+.middle {
+  margin-left: 60px;
+}
+
+.imghome {
+  height: 80%;
+  width: 95%;
+}

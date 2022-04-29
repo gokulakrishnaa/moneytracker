@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../ReactContext.js";
+import "../css/incexp.css";
 
 export function IncExp() {
   const { transactions } = useContext(GlobalContext);
@@ -16,12 +17,12 @@ export function IncExp() {
   return (
     <div className="incexp">
       <div>
-        <h4>Income</h4>
-        <p className="plus">₹ {income}</p>
+        <h3 className="incexpdiv">Income : </h3>
+        <h2 className="incexpdiv">₹ {income}</h2>
       </div>
       <div>
-        <h4>Expense</h4>
-        <p className="plus">₹ {expense}</p>
+        <h3 className="incexpdiv">Expense : </h3>
+        <h2 className="incexpdiv">₹ {expense}</h2>
       </div>
     </div>
   );
