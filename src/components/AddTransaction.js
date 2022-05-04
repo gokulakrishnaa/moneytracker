@@ -1,11 +1,14 @@
 import React, { useState, useContext } from "react";
 import "../css/addtransaction.css";
 import { GlobalContext } from "../ReactContext";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import TextField from "@mui/material/TextField";
 
 export function AddTransaction() {
   const [remark, setRemark] = useState("");
   const [amount, setAmount] = useState(0);
   const [choice, setChoice] = useState("");
+  const [date, setDate] = useState(new Date());
 
   const { addTransactions, getTransactions } = useContext(GlobalContext);
 
@@ -27,7 +30,10 @@ export function AddTransaction() {
       remark: remark,
       amount: +`${sign()}${amount}`,
       status: amtStatus(),
+      month: date.getMonth() + 1,
+      year: date.getFullYear(),
     };
+    console.log(newTransaction);
     addTransactions(newTransaction);
     getTransactions(userId);
   };
@@ -52,6 +58,26 @@ export function AddTransaction() {
             onChange={(e) => setChoice(e.target.value)}
           />
           <label for="income">Expense</label>
+          <div className="datepick">
+            <DatePicker
+              views={["year", "month"]}
+              minDate={new Date("2020-03-01")}
+              maxDate={new Date("2025-06-01")}
+              value={date}
+              onChange={(newValue) => {
+                setDate(newValue);
+              }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  helperText={null}
+                  id="outlined-size-small"
+                  defaultValue="Small"
+                  size="small"
+                />
+              )}
+            />
+          </div>
         </div>
         <select
           className="dropdownadd"

@@ -43,7 +43,7 @@ export function TransactionData() {
     <div className="transactiondata">
       <h2>Transaction History : </h2>
       <br />
-      <TableContainer sx={{ maxHeight: 170 }} component={Paper}>
+      <TableContainer sx={{ maxHeight: 160 }} component={Paper}>
         <Table sx={{ minWidth: 360 }} aria-label="simple table">
           <TableBody>
             {transactions.map((transaction) => (

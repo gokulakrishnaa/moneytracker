@@ -7,19 +7,20 @@
   display: flex;
   flex-direction: row;
   /* background-color: aqua; */
-  height: 447px;
+  height: 450px;
   padding: 25px 40px;
 }
 
 .left {
   margin-left: 50px;
+  margin-top: 25px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   justify-content: flex-start;
 }
 .right {
-  margin-left: 70px;
+  margin-left: 65px;
   display: flex;
   flex-direction: column;
   gap: 20px;

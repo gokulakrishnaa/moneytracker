@@ -7,53 +7,57 @@ import { TransactionData } from "./components/TransactionData.js";
 import { AddTransaction } from "./components/AddTransaction.js";
 import { LoginPage } from "./components/LoginPage.js";
 import { Signup } from "./components/Signup";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
 function App() {
   return (
-    <div className="App">
-      <div className="area">
-        <ul className="circles">
-          <Switch>
-            <Route exact path="/">
-              <LoginPage />
-            </Route>
-            <Route path="/signup">
-              <Signup />
-            </Route>
-            <Route path="/home">
-              <Header />
-              <div className="main">
-                <div className="left">
-                  <Balance />
-                  <IncExp />
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <div className="App">
+        <div className="area">
+          <ul className="circles">
+            <Switch>
+              <Route exact path="/">
+                <LoginPage />
+              </Route>
+              <Route path="/signup">
+                <Signup />
+              </Route>
+              <Route path="/home">
+                <Header />
+                <div className="main">
+                  <div className="left">
+                    <Balance />
+                    <IncExp />
+                  </div>
+                  <div className="middle">
+                    <img
+                      className="imghome"
+                      src="https://cdni.iconscout.com/illustration/premium/thumb/boy-taking-notes-in-online-class-5004573-4211289.png"
+                      alt=""
+                    />
+                  </div>
+                  <div className="right">
+                    <TransactionData />
+                    <AddTransaction />
+                  </div>
                 </div>
-                <div className="middle">
-                  <img
-                    className="imghome"
-                    src="https://cdni.iconscout.com/illustration/premium/thumb/boy-taking-notes-in-online-class-5004573-4211289.png"
-                    alt=""
-                  />
-                </div>
-                <div className="right">
-                  <TransactionData />
-                  <AddTransaction />
-                </div>
-              </div>
-            </Route>
-          </Switch>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
+              </Route>
+            </Switch>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
       </div>
-    </div>
+    </LocalizationProvider>
   );
 }
 
