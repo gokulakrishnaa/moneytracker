@@ -13,6 +13,8 @@ export function AddTransaction() {
   const { addTransactions, getTransactions } = useContext(GlobalContext);
 
   const userId = localStorage.getItem("Id");
+  const month = localStorage.getItem("currentmonth");
+  const year = localStorage.getItem("currentyear");
 
   const onSubmit = (add) => {
     add.preventDefault();
@@ -33,9 +35,10 @@ export function AddTransaction() {
       month: date.getMonth() + 1,
       year: date.getFullYear(),
     };
-    console.log(newTransaction);
     addTransactions(newTransaction);
-    getTransactions(userId);
+    getTransactions(userId, year, month);
+    // setRemark("");
+    // setAmount("");
   };
 
   return (
@@ -66,6 +69,9 @@ export function AddTransaction() {
               value={date}
               onChange={(newValue) => {
                 setDate(newValue);
+                localStorage.setItem("currentmonth", newValue.getMonth() + 1);
+                localStorage.setItem("currentyear", newValue.getFullYear());
+                getTransactions(userId, year, month);
               }}
               renderInput={(params) => (
                 <TextField

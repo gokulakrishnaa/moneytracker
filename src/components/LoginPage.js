@@ -8,6 +8,9 @@ export function LoginPage() {
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
 
+  const currentmonth = new Date().getMonth() + 1;
+  const currentyear = new Date().getFullYear();
+
   const signIn = () => {
     const credentials = {
       email,
@@ -26,6 +29,8 @@ export function LoginPage() {
         if (details.message === "Login Successful") {
           localStorage.setItem("Id", details.user._id);
           localStorage.setItem("Name", details.user.firstname);
+          localStorage.setItem("currentmonth", currentmonth);
+          localStorage.setItem("currentyear", currentyear);
           history.push("/home");
         } else {
           setErrMsg("Invalid Credentials");

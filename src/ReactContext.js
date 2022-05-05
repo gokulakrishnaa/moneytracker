@@ -22,9 +22,9 @@ export const GlobalProvider = ({ children }) => {
   // }
 
   //Actions
-  async function getTransactions(userId) {
+  async function getTransactions(userId, year, month) {
     const transaction_data = await fetch(
-      `${API_URL}/api/exptrack/${userId}`
+      `${API_URL}/api/exptrack/${userId}/${year}/${month}`
     ).then((data) => data.json());
 
     dispatch({

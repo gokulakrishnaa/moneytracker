@@ -33,11 +33,13 @@ import "../css/transactiondata.css";
 export function TransactionData() {
   const { transactions, getTransactions } = useContext(GlobalContext);
   const userId = localStorage.getItem("Id");
+  const month = localStorage.getItem("currentmonth");
+  const year = localStorage.getItem("currentyear");
 
   useEffect(() => {
-    getTransactions(userId);
+    getTransactions(userId, year, month);
     // eslint-disable-next-line
-  }, []);
+  }, [year, month, userId]);
 
   return (
     <div className="transactiondata">
