@@ -17,18 +17,19 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  justify-content: flex-start;
+  flex: 2.5;
+  /* justify-content: flex-start; */
 }
 .right {
-  margin-left: 65px;
+  margin-left: 50px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  justify-content: flex-start;
+  flex: 5;
 }
 
 .middle {
-  margin-left: 60px;
+  flex: 4.5;
 }
 
 .imghome {

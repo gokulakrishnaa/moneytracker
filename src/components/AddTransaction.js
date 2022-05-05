@@ -94,6 +94,7 @@ export function AddTransaction() {
             Select your option
           </option>
           <option value="Salary">Salary</option>
+          <option value="Savings">Savings</option>
           <option value="Rent">Rent</option>
           <option value="Food">Food</option>
           <option value="Travel">Travel</option>
