@@ -8,6 +8,8 @@ export function Header() {
   const signOut = () => {
     localStorage.removeItem("Id");
     localStorage.removeItem("Name");
+    localStorage.removeItem("currentmonth");
+    localStorage.removeItem("currentyear");
     history.push("/");
   };
   return (
