@@ -31,6 +31,13 @@ export const AppReducer = (state, action) => {
       };
     // Calculator functions
     case "ADD_DIGIT":
+      if (state.overwrite) {
+        return {
+          ...state,
+          currentoperand: action.payload,
+          overwrite: false,
+        };
+      }
       if (action.payload === "0" && state.currentoperand === "0") return state;
       if (action.payload === "." && state.currentoperand.includes("."))
         return state;
@@ -64,9 +71,43 @@ export const AppReducer = (state, action) => {
     case "CLEAR":
       return {
         ...state,
-        currentoperand: "",
-        previousoperand: "",
-        operation: "",
+        currentoperand: null,
+        previousoperand: null,
+        operation: null,
+      };
+    case "EQUAL":
+      if (
+        state.operation == null ||
+        state.currentoperand == null ||
+        state.previousoperand == null
+      ) {
+        return state;
+      }
+      return {
+        ...state,
+        overwrite: true,
+        currentoperand: evaluate(state),
+        previousoperand: null,
+        operation: null,
+      };
+    case "DELETE":
+      if (state.overwrite) {
+        return {
+          ...state,
+          overwrite: false,
+          currentoperand: null,
+        };
+      }
+      if (state.currentoperand == null) return state;
+      if (state.currentoperand.length === 1) {
+        return {
+          ...state,
+          currentoperand: null,
+        };
+      }
+      return {
+        ...state,
+        currentoperand: state.currentoperand.slice(0, -1),
       };
     default:
       return state;

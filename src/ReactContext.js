@@ -5,9 +5,9 @@ const initialState = {
   transactions: [],
   prevtransactions: [],
   // userId: "",
-  currentoperand: "",
-  previousoperand: "",
-  operation: "",
+  currentoperand: null,
+  previousoperand: null,
+  operation: null,
 };
 
 const API_URL = "http://localhost:8000";
@@ -84,6 +84,20 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  function equal() {
+    dispatch({
+      type: "EQUAL",
+      payload: "",
+    });
+  }
+
+  function deleteDigit() {
+    dispatch({
+      type: "DELETE",
+      payload: "",
+    });
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -99,6 +113,8 @@ export const GlobalProvider = ({ children }) => {
         addDigit,
         chooseOp,
         clear,
+        equal,
+        deleteDigit,
       }}
     >
       {children}

@@ -72,8 +72,10 @@ export function Header() {
               horizontal: "left",
             }}
           >
-            <Typography sx={{ p: 1 }}>
-              {notification ? "Salary has to be added" : "No notifications"}
+            <Typography
+              sx={{ p: 1, fontFamily: "Montserrat,sans-serif", fontSize: 12 }}
+            >
+              {notification ? "Salary has to be added" : "No new notifications"}
             </Typography>
           </Popover>
         </Badge>

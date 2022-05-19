@@ -10,6 +10,8 @@ export function Calculator() {
     addDigit,
     chooseOp,
     clear,
+    equal,
+    deleteDigit,
   } = useContext(GlobalContext);
   return (
     <div className="calculator-grid">
@@ -22,7 +24,7 @@ export function Calculator() {
       <button className="span-two" onClick={() => clear()}>
         AC
       </button>
-      <button>DEL</button>
+      <button onClick={() => deleteDigit()}>DEL</button>
       <button value="/" onClick={(e) => chooseOp(e.target.value)}>
         /
       </button>
@@ -68,7 +70,9 @@ export function Calculator() {
       <button value="0" onClick={(e) => addDigit(e.target.value)}>
         0
       </button>
-      <button className="span-two">=</button>
+      <button className="span-two" onClick={() => equal()}>
+        =
+      </button>
     </div>
   );
 }
