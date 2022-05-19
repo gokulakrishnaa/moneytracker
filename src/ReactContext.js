@@ -3,7 +3,11 @@ import { AppReducer } from "./AppReducer.js";
 
 const initialState = {
   transactions: [],
+  prevtransactions: [],
   // userId: "",
+  currentoperand: "",
+  previousoperand: "",
+  operation: "",
 };
 
 const API_URL = "http://localhost:8000";
@@ -33,6 +37,17 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  async function getPrevTransactions(userId, year, prevmonth) {
+    const transaction_data = await fetch(
+      `${API_URL}/api/exptrack/${userId}/${year}/${prevmonth}`
+    ).then((data) => data.json());
+
+    dispatch({
+      type: "GET_PREVTRANSACTIONS",
+      payload: transaction_data,
+    });
+  }
+
   function addTransactions(transaction) {
     fetch(`${API_URL}/api/exptrack`, {
       method: "POST",
@@ -46,13 +61,44 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  //Calculator Functions
+
+  function addDigit(digit) {
+    dispatch({
+      type: "ADD_DIGIT",
+      payload: digit,
+    });
+  }
+
+  function chooseOp(operate) {
+    dispatch({
+      type: "CHOOSE_OP",
+      payload: operate,
+    });
+  }
+
+  function clear() {
+    dispatch({
+      type: "CLEAR",
+      payload: "",
+    });
+  }
+
   return (
     <GlobalContext.Provider
       value={{
         transactions: state.transactions,
+        prevtransactions: state.prevtransactions,
+        getPrevTransactions,
         getTransactions,
         addTransactions,
         // userId,
+        previousoperand: state.previousoperand,
+        currentoperand: state.currentoperand,
+        operation: state.operation,
+        addDigit,
+        chooseOp,
+        clear,
       }}
     >
       {children}

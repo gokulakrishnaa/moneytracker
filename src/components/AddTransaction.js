@@ -4,11 +4,34 @@ import { GlobalContext } from "../ReactContext";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import TextField from "@mui/material/TextField";
 
+const incomeData = [
+  "Salary",
+  "Savings",
+  "House Rent",
+  "Gift Voucher",
+  "Borrowings",
+  "Interest",
+  "Others",
+];
+
+const expenseData = [
+  "Rent",
+  "Fuel",
+  "Food",
+  "Current Bill",
+  "Movies",
+  "Travel",
+  "Shopping",
+  "Fund Transfer",
+  "Others",
+];
+
 export function AddTransaction() {
   const [remark, setRemark] = useState("");
   const [amount, setAmount] = useState(0);
   const [choice, setChoice] = useState("");
   const [date, setDate] = useState(new Date());
+  const [dmsg, setDmsg] = useState("");
 
   const { addTransactions, getTransactions } = useContext(GlobalContext);
 
@@ -32,11 +55,13 @@ export function AddTransaction() {
       remark: remark,
       amount: +`${sign()}${amount}`,
       status: amtStatus(),
+      date: date.getDate(),
       month: date.getMonth() + 1,
       year: date.getFullYear(),
     };
     addTransactions(newTransaction);
     getTransactions(userId, year, month);
+    setDmsg("Transaction added Successfully !!");
     // setRemark("");
     // setAmount("");
   };
@@ -63,7 +88,7 @@ export function AddTransaction() {
           <label for="income">Expense</label>
           <div className="datepick">
             <DatePicker
-              views={["year", "month"]}
+              views={["year", "month", "day"]}
               minDate={new Date("2020-03-01")}
               maxDate={new Date("2025-06-01")}
               value={date}
@@ -93,17 +118,9 @@ export function AddTransaction() {
           <option value="" disabled selected>
             Select your option
           </option>
-          <option value="Salary">Salary</option>
-          <option value="Savings">Savings</option>
-          <option value="Rent">Rent</option>
-          <option value="Food">Food</option>
-          <option value="Travel">Travel</option>
-          <option value="Movies">Movies</option>
-          <option value="Current Bill">Current Bill</option>
-          <option value="Interest">Interest</option>
-          <option value="Transfer">Transfer</option>
-          <option value="Fuel">Fuel</option>
-          <option value="Others">Others</option>
+          {choice === "Income"
+            ? incomeData.map((data) => <option value={data}>{data}</option>)
+            : expenseData.map((data) => <option value={data}>{data}</option>)}
         </select>
         <br />
         <input
@@ -114,6 +131,7 @@ export function AddTransaction() {
           className="textaddtran"
         />
         <button className="btn">Add Transaction</button>
+        <p className="dmsg">{dmsg}</p>
       </form>
     </div>
   );

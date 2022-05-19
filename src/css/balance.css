@@ -1,5 +1,13 @@
 .baldiv {
-  margin-top: 20px;
+  margin-top: 15px;
+}
+
+.balance {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 100px;
 }
 
 .baltitle {

@@ -1,3 +1,20 @@
 .transactiondata {
   min-height: 180px;
 }
+
+.table-container {
+  min-height: 270px;
+}
+
+.tran-btn {
+  background-color: #2c4d75;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 5px;
+  width: 20%;
+  margin-top: 30px;
+}
