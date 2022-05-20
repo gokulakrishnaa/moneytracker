@@ -1,44 +1,39 @@
-import React, { useState, useContext, useEffect } from "react";
+import React from "react";
 import "../css/header.css";
 import { useHistory } from "react-router-dom";
-import NotificationsActiveOutlinedIcon from "@mui/icons-material/NotificationsActiveOutlined";
-import Badge from "@mui/material/Badge";
-import Popover from "@mui/material/Popover";
-import Typography from "@mui/material/Typography";
-import { GlobalContext } from "../ReactContext";
+// import NotificationsActiveOutlinedIcon from "@mui/icons-material/NotificationsActiveOutlined";
+// import Badge from "@mui/material/Badge";
+// import Popover from "@mui/material/Popover";
+// import Typography from "@mui/material/Typography";
+// import { GlobalContext } from "../ReactContext";
 
 export function Header() {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [notification, setNotification] = useState("");
-  // const [badge,setBadge] = useState("")
+  // const [anchorEl, setAnchorEl] = useState(null);
+  // const [notification, setNotification] = useState("");
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  // const handleClick = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };
 
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+  // const open = Boolean(anchorEl);
+  // const id = open ? "simple-popover" : undefined;
 
-  const { transactions } = useContext(GlobalContext);
-  const handleNotify = () => {
-    transactions
-      .filter((transaction) => transaction.remark === "Salary")
-      .map((data) =>
-        data.remark === "Salary"
-          ? setNotification(false)
-          : setNotification(true)
-      );
-  };
+  // const { transactions } = useContext(GlobalContext);
+  // const handleNotify = () => {
+  //   transactions
+  //     .filter((transaction) => transaction.remark === "Salary")
+  //     .map((data) => setNotification(data.remark));
+  // };
 
-  useEffect(() => {
-    handleNotify();
-    console.log(notification);
-    // eslint-disable-next-line
-  }, []);
+  // useEffect(() => {
+  //   handleNotify();
+  //   console.log(notification);
+  //   // eslint-disable-next-line
+  // }, []);
 
   const history = useHistory();
   const name = localStorage.getItem("Name");
@@ -53,8 +48,8 @@ export function Header() {
     <div className="header">
       <p className="title">Expense Tracker</p>
       <p className="headername">Hello, {name} :)</p>
-      <p className="notify">
-        <Badge badgeContent={notification ? 1 : 0} color="primary">
+      {/* <p className="notify">
+        <Badge badgeContent={notification !== "Salary" ? 1 : 0} color="primary">
           <NotificationsActiveOutlinedIcon
             style={{ color: "white" }}
             fontSize="large"
@@ -75,11 +70,13 @@ export function Header() {
             <Typography
               sx={{ p: 1, fontFamily: "Montserrat,sans-serif", fontSize: 12 }}
             >
-              {notification ? "Salary has to be added" : "No new notifications"}
+              {notification !== "Salary"
+                ? "Salary has to be added"
+                : "No new notifications"}
             </Typography>
           </Popover>
         </Badge>
-      </p>
+      </p> */}
       <button className="signOutButton" onClick={signOut}>
         Sign out
       </button>

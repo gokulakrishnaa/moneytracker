@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "../css/addtransaction.css";
 import { GlobalContext } from "../ReactContext";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -32,8 +32,10 @@ export function AddTransaction() {
   const [choice, setChoice] = useState("");
   const [date, setDate] = useState(new Date());
   const [dmsg, setDmsg] = useState("");
+  const [notification, setNotification] = useState("");
 
-  const { addTransactions, getTransactions } = useContext(GlobalContext);
+  const { transactions, addTransactions, getTransactions } =
+    useContext(GlobalContext);
 
   const userId = localStorage.getItem("Id");
   const month = localStorage.getItem("currentmonth");
@@ -65,6 +67,17 @@ export function AddTransaction() {
     // setRemark("");
     // setAmount("");
   };
+
+  const handleNotify = () => {
+    transactions
+      .filter((transaction) => transaction.remark === "Salary")
+      .map((data) => setNotification(data.remark));
+  };
+
+  useEffect(() => {
+    handleNotify();
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div className="addtransaction">
@@ -133,6 +146,14 @@ export function AddTransaction() {
         <button className="btn">Add Transaction</button>
         <p className="dmsg">{dmsg}</p>
       </form>
+      <div className="notify-rem">
+        <h2>Remainder Notification :</h2>
+        <p>
+          {notification !== "Salary"
+            ? "Salary has to be added"
+            : "No new notifications"}
+        </p>
+      </div>
     </div>
   );
 }
